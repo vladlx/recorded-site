@@ -22,6 +22,7 @@ html{scroll-behavior:smooth}
 a{color:#1C1F24}a:hover{color:#D93036}
 summary{cursor:pointer;list-style:none}
 summary::-webkit-details-marker{display:none}
+@media (max-width: 720px){.nav-links{display:none !important}nav{justify-content:space-between}}
 </style>
 </helmet>
 <div style="font-family: Inter, system-ui, sans-serif; color: #1C1F24; background: #FFFFFF">
@@ -33,7 +34,7 @@ summary::-webkit-details-marker{display:none}
 <span style="width: 12px; height: 12px; border-radius: 50%; background: #E5484D; box-shadow: 0 0 0 4px #FDE8E8"></span>
 <span style="font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 500">recorded<span style="color: #D93036">.md</span></span>
 </a>
-<div style="display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 15px; flex: 1 1 auto">
+<div class="nav-links" style="display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 15px; flex: 1 1 auto">
 <a href="#features" style="text-decoration: none; color: #4B5160">Возможности</a>
 <a href="#demo" style="text-decoration: none; color: #4B5160">Демо</a>
 <a href="#pricing" style="text-decoration: none; color: #4B5160">Тарифы</a>
@@ -49,7 +50,7 @@ summary::-webkit-details-marker{display:none}
 <!-- 1. HERO -->
 <section id="top" style="background: #F7F8FA; border-bottom: 1px solid #ECEEF1">
 <div style="max-width: 960px; margin: 0 auto; padding: 56px 24px 48px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px">
-<h1 style="margin: 0; font-size: 44px; line-height: 1.1; letter-spacing: -0.025em; font-weight: 700">Расшифровка аудио и видео в текст с ИИ-конспектом</h1>
+<h1 style="margin: 0; font-size: clamp(28px, 7.5vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700">Расшифровка аудио и видео в текст с ИИ-конспектом</h1>
 <p style="margin: 0; font-size: 18px; line-height: 1.5; color: #4B5160">Встречи, лекции, интервью и вебинары — в текст по спикерам за пару минут</p>
 
 <div id="upload" style="width: 100%; margin-top: 16px; background: #FFFFFF; border: 1px solid #E6E8EC; border-radius: 20px; padding: 20px; box-shadow: 0 24px 60px -30px rgba(28,31,36,0.2); display: flex; flex-direction: column; gap: 16px; text-align: left; box-sizing: border-box">
@@ -92,7 +93,7 @@ summary::-webkit-details-marker{display:none}
 
 <!-- 3. BENEFITS: 3 карточки с мини-макетами -->
 <section id="features" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 32px">
-<h2 style="margin: 0 0 12px; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; text-align: center">Не переслушивайте записи — читайте главное</h2>
+<h2 style="margin: 0 0 12px; font-size: clamp(26px, 6.5vw, 40px); line-height: 1.15; letter-spacing: -0.02em; text-align: center">Не переслушивайте записи — читайте главное</h2>
 <p style="margin: 0 auto 48px; font-size: 18px; line-height: 1.5; color: #4B5160; text-align: center; max-width: 640px">Текст, итоги, решения и задачи готовы сами — без ручного протокола после каждой встречи</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px">
 
@@ -148,7 +149,7 @@ summary::-webkit-details-marker{display:none}
 
 <!-- 4. PRODUCT: интерактивное демо -->
 <section id="demo" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px 32px">
-<h2 style="margin: 0 0 12px; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; text-align: center">Попробуйте прямо здесь</h2>
+<h2 style="margin: 0 0 12px; font-size: clamp(26px, 6.5vw, 40px); line-height: 1.15; letter-spacing: -0.02em; text-align: center">Попробуйте прямо здесь</h2>
 <p style="margin: 0 auto 32px; font-size: 18px; line-height: 1.5; color: #4B5160; text-align: center; max-width: 640px">Раскройте папку, выберите запись, включите плеер или нажмите на фразу</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 24px">
 <sc-for list="{{steps}}" as="s" hint-placeholder-count="4">
@@ -232,7 +233,7 @@ summary::-webkit-details-marker{display:none}
 
 <!-- FEATURES (вторичные) -->
 <section style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 32px">
-<h2 style="margin: 0 0 32px; font-size: 32px; line-height: 1.15; letter-spacing: -0.02em">А ещё</h2>
+<h2 style="margin: 0 0 32px; font-size: clamp(24px, 5.5vw, 32px); line-height: 1.15; letter-spacing: -0.02em">А ещё</h2>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
 <sc-for list="{{features}}" as="f" hint-placeholder-count="6">
 <div style="border: 1px solid #ECEEF1; border-radius: 16px; padding: 22px; display: flex; gap: 14px; align-items: flex-start">
@@ -245,7 +246,7 @@ summary::-webkit-details-marker{display:none}
 
 <!-- USE CASES с картинками -->
 <section style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 80px">
-<h2 style="margin: 0 0 40px; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; text-align: center">Для встреч, лекций, интервью и не только</h2>
+<h2 style="margin: 0 0 40px; font-size: clamp(26px, 6.5vw, 40px); line-height: 1.15; letter-spacing: -0.02em; text-align: center">Для встреч, лекций, интервью и не только</h2>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px">
 <sc-for list="{{cases}}" as="c" hint-placeholder-count="4">
 <div style="border: 1px solid #ECEEF1; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column">
@@ -262,8 +263,8 @@ summary::-webkit-details-marker{display:none}
 <!-- 5. OFFER -->
 <section id="pricing" style="background: #F7F8FA; border-top: 1px solid #ECEEF1; border-bottom: 1px solid #ECEEF1">
 <div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px">
-<h2 style="margin: 0 0 24px; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; text-align: center">Минуты вместо часов на каждую запись</h2>
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 24px; margin-bottom: 48px">
+<h2 style="margin: 0 0 24px; font-size: clamp(26px, 6.5vw, 40px); line-height: 1.15; letter-spacing: -0.02em; text-align: center">Минуты вместо часов на каждую запись</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), max-content)); justify-content: center; gap: 12px 28px; margin-bottom: 48px">
 <sc-for list="{{recap}}" as="r" hint-placeholder-count="4">
 <span style="display: inline-flex; gap: 8px; align-items: center; font-size: 16px"><span style="width: 22px; height: 22px; border-radius: 50%; background: #E8F5EE; color: #1A7F4B; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; flex: none">✓</span>{{r}}</span>
 </sc-for>
@@ -297,7 +298,7 @@ summary::-webkit-details-marker{display:none}
 
 <!-- FAQ -->
 <section id="faq" style="max-width: 880px; margin: 0 auto; padding: 88px 24px 40px">
-<h2 style="margin: 0 0 28px; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em">Частые вопросы</h2>
+<h2 style="margin: 0 0 28px; font-size: clamp(26px, 6.5vw, 40px); line-height: 1.15; letter-spacing: -0.02em">Частые вопросы</h2>
 <div style="display: flex; flex-direction: column; border-top: 1px solid #ECEEF1">
 <sc-for list="{{faq}}" as="q" hint-placeholder-count="5">
 <details style="border-bottom: 1px solid #ECEEF1; padding: 20px 0">
@@ -312,7 +313,7 @@ summary::-webkit-details-marker{display:none}
 <section style="max-width: 1200px; margin: 0 auto; padding: 48px 24px 104px">
 <div style="background: #1C1F24; color: #FFFFFF; border-radius: 24px; padding: 64px 32px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px">
 <span style="width: 14px; height: 14px; border-radius: 50%; background: #E5484D; box-shadow: 0 0 0 6px rgba(229,72,77,0.25)"></span>
-<h2 style="margin: 0; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; max-width: 720px">Загрузите запись — через пару минут получите текст и конспект</h2>
+<h2 style="margin: 0; font-size: clamp(26px, 6.5vw, 40px); line-height: 1.15; letter-spacing: -0.02em; max-width: 720px">Загрузите запись — через пару минут получите текст и конспект</h2>
 <p style="margin: 0; font-size: 18px; color: #C9CDD4">180 минут в месяц бесплатно</p>
 <a href="#upload" style="text-decoration: none; background: #FFFFFF; color: #1C1F24; font-size: 16px; font-weight: 600; padding: 16px 28px; border-radius: 12px">Начать бесплатно</a>
 </div>
