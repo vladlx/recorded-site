@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Расшифровка аудио и видео в текст по спикерам с ИИ-конспектом.">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="icon" href="./favicon.ico" sizes="any">
+<title>recorded.md — расшифровка аудио и видео</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+html{scroll-behavior:smooth}
+a{color:#1C1F24}a:hover{color:#D93036}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #1C1F24; background: #FFFFFF">
+
+<!-- NAV -->
+<header style="border-bottom: 1px solid #ECEEF1">
+<nav aria-label="Основная навигация" style="max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+<a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1C1F24">
+<span style="width: 12px; height: 12px; border-radius: 50%; background: #E5484D; box-shadow: 0 0 0 4px #FDE8E8"></span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 500">recorded<span style="color: #D93036">.md</span></span>
+</a>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 15px; flex: 1 1 auto">
+<a href="#features" style="text-decoration: none; color: #4B5160">Возможности</a>
+<a href="#demo" style="text-decoration: none; color: #4B5160">Демо</a>
+<a href="#pricing" style="text-decoration: none; color: #4B5160">Тарифы</a>
+<a href="#faq" style="text-decoration: none; color: #4B5160">Вопросы</a>
+</div>
+<div style="display: flex; gap: 12px; align-items: center">
+<a href="#app" style="text-decoration: none; color: #1C1F24; font-size: 15px; padding: 12px 14px">Войти</a>
+<a href="#upload" style="text-decoration: none; background: #1C1F24; color: #FFFFFF; font-size: 15px; font-weight: 500; padding: 12px 18px; border-radius: 10px">Начать бесплатно</a>
+</div>
+</nav>
+</header>
+
+<!-- 1. HERO -->
+<section id="top" style="background: #F7F8FA; border-bottom: 1px solid #ECEEF1">
+<div style="max-width: 960px; margin: 0 auto; padding: 56px 24px 48px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px">
+<h1 style="margin: 0; font-size: 44px; line-height: 1.1; letter-spacing: -0.025em; font-weight: 700">Расшифровка аудио и видео в текст с ИИ-конспектом</h1>
+<p style="margin: 0; font-size: 18px; line-height: 1.5; color: #4B5160">Встречи, лекции, интервью и вебинары — в текст по спикерам за пару минут</p>
+
+<div id="upload" style="width: 100%; margin-top: 16px; background: #FFFFFF; border: 1px solid #E6E8EC; border-radius: 20px; padding: 20px; box-shadow: 0 24px 60px -30px rgba(28,31,36,0.2); display: flex; flex-direction: column; gap: 16px; text-align: left; box-sizing: border-box">
+<div role="tablist" aria-label="Источник записи" style="display: flex; gap: 4px; padding: 4px; background: #F3F4F6; border-radius: 12px; align-self: flex-start">
+<button type="button" role="tab" aria-selected="{{fileSelected}}" onClick="{{showFile}}" style="{{fileTabStyle}}">Файл</button>
+<button type="button" role="tab" aria-selected="{{linkSelected}}" onClick="{{showLink}}" style="{{linkTabStyle}}">Ссылка</button>
+</div>
+<sc-if value="{{isFileTab}}" hint-placeholder-val="{{true}}">
+<a href="#app" style="text-decoration: none; color: #1C1F24; border: 1.5px dashed #D5D9DF; border-radius: 14px; background: #FAFAFB; padding: 56px 20px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
+<span style="width: 56px; height: 56px; border-radius: 16px; background: #FDE8E8; display: flex; align-items: center; justify-content: center">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D93036" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4"></path><path d="m6 10 6-6 6 6"></path><path d="M4 20h16"></path></svg>
+</span>
+<span style="font-size: 20px; font-weight: 600">Перетащите аудио или видео сюда</span>
+<span style="display: inline-flex; background: #1C1F24; color: #FFFFFF; font-size: 16px; font-weight: 500; padding: 14px 24px; border-radius: 12px; margin-top: 4px">Выбрать файл</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #6B7280">mp3 · wav · m4a · ogg · mp4 · mov · webm</span>
+</a>
+</sc-if>
+<sc-if value="{{isLinkTab}}" hint-placeholder-val="{{false}}">
+<div style="border: 1.5px dashed #D5D9DF; border-radius: 14px; background: #FAFAFB; padding: 48px 24px; display: flex; flex-direction: column; gap: 12px">
+<label for="video-link" style="font-size: 16px; font-weight: 600">Ссылка на видео или аудио</label>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<input id="video-link" type="url" placeholder="https://youtube.com/watch?v=…" style="flex: 1 1 320px; min-width: 0; font: inherit; font-size: 16px; padding: 14px 16px; border: 1px solid #D5D9DF; border-radius: 12px; background: #FFFFFF; color: #1C1F24">
+<a href="#app" style="text-decoration: none; background: #1C1F24; color: #FFFFFF; font-size: 16px; font-weight: 500; padding: 14px 24px; border-radius: 12px">Расшифровать</a>
+</div>
+<span style="font-size: 14px; color: #6B7280">YouTube, VK Видео, Яндекс Диск и другие</span>
+</div>
+</sc-if>
+<div style="text-align: center; font-size: 14px; color: #6B7280">180 минут в месяц бесплатно</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-size: 14px; color: #3A3F47; margin-top: 8px">
+<span style="background: #FFFFFF; border: 1px solid #E3E5E9; border-radius: 999px; padding: 7px 14px">Разделение по спикерам</span>
+<span style="background: #FFFFFF; border: 1px solid #E3E5E9; border-radius: 999px; padding: 7px 14px">Таймкоды</span>
+<span style="background: #FFFFFF; border: 1px solid #E3E5E9; border-radius: 999px; padding: 7px 14px">ИИ-конспект и задачи</span>
+<span style="background: #FFFFFF; border: 1px solid #E3E5E9; border-radius: 999px; padding: 7px 14px">Экспорт в Word и PDF</span>
+<span style="background: #FFFFFF; border: 1px solid #E3E5E9; border-radius: 999px; padding: 7px 14px">Видео по ссылке</span>
+</div>
+</div>
+</section>
+
+<!-- 3. BENEFITS: 3 карточки с мини-макетами -->
+<section id="features" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 32px">
+<h2 style="margin: 0 0 12px; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; text-align: center">Не переслушивайте записи — читайте главное</h2>
+<p style="margin: 0 auto 48px; font-size: 18px; line-height: 1.5; color: #4B5160; text-align: center; max-width: 640px">Текст, итоги, решения и задачи готовы сами — без ручного протокола после каждой встречи</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px">
+
+<div style="border: 1px solid #ECEEF1; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column">
+<div aria-hidden="true" style="background: #F7F8FA; padding: 28px 24px; height: 220px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; justify-content: center">
+<div style="background: #FFFFFF; border: 1px solid #ECEEF1; border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 12px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #2563EB; background: #EAF0FD; border-radius: 8px; padding: 6px 8px">mp4</span>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; font-weight: 600">Стратегическая сессия.mp4</span><span style="height: 5px; border-radius: 3px; background: #E5484D; width: 100%"></span></div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #ECEEF1; border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 10px">
+<span style="width: 22px; height: 22px; border-radius: 50%; background: #E8F5EE; color: #1A7F4B; display: flex; align-items: center; justify-content: center; font-size: 12px">✓</span>
+<span style="font-size: 13px; font-weight: 600">Транскрипция готова</span>
+<span style="margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6B7280">1 ч 12 мин</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #ECEEF1; border-radius: 12px; padding: 12px 14px; font-size: 13px; line-height: 1.5"><span style="color: #2563EB; font-weight: 600">Аня</span> <span style="font-family: 'JetBrains Mono', monospace; color: #6B7280; font-size: 12px">00:41</span><br>Начнём с целей на квартал…</div>
+</div>
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 20px">Текст за минуты, а не часы</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4B5160">Загрузите запись — получите текст с пунктуацией, по спикерам и с таймкодами.</p>
+</div>
+</div>
+
+<div style="border: 1px solid #ECEEF1; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column">
+<div aria-hidden="true" style="background: #FFF6F6; padding: 28px 24px; height: 220px; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px; justify-content: center">
+<div style="font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E5484D" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M3 12h18M6 6l12 12M18 6 6 18"></path></svg>Задачи со встречи</div>
+<div style="background: #FFFFFF; border: 1px solid #F3DADA; border-radius: 10px; padding: 10px 12px; display: flex; gap: 10px; align-items: center"><span style="width: 14px; height: 14px; border: 1.5px solid #C9CDD4; border-radius: 4px; flex: none"></span><span style="font-size: 13px; flex: 1">Подготовить КП клиенту</span><span style="font-size: 12px; color: #6B7280">Олег · пт</span></div>
+<div style="background: #FFFFFF; border: 1px solid #F3DADA; border-radius: 10px; padding: 10px 12px; display: flex; gap: 10px; align-items: center"><span style="width: 14px; height: 14px; border: 1.5px solid #C9CDD4; border-radius: 4px; flex: none"></span><span style="font-size: 13px; flex: 1">Согласовать бюджет</span><span style="font-size: 12px; color: #6B7280">Аня · 14.11</span></div>
+<div style="background: #FFFFFF; border: 1px solid #F3DADA; border-radius: 10px; padding: 10px 12px; display: flex; gap: 10px; align-items: center"><span style="width: 14px; height: 14px; border-radius: 4px; flex: none; background: #1A7F4B; color: #FFFFFF; font-size: 10px; display: flex; align-items: center; justify-content: center">✓</span><span style="font-size: 13px; flex: 1; color: #6B7280; text-decoration: line-through">Отправить запись команде</span><span style="font-size: 12px; color: #6B7280">Дима</span></div>
+</div>
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 20px">Итоги и задачи — автоматически</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4B5160">ИИ соберёт кратко, решения и задачи с ответственными. Договорённости больше не теряются.</p>
+</div>
+</div>
+
+<div style="border: 1px solid #ECEEF1; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column">
+<div aria-hidden="true" style="background: #F2F5FD; padding: 28px 24px; height: 220px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px; justify-content: center; align-items: center">
+<div style="display: flex; gap: 12px">
+<div style="width: 64px; height: 80px; background: #FFFFFF; border: 1px solid #DCE4F7; border-radius: 10px; display: flex; flex-direction: column; justify-content: flex-end; padding: 8px; box-sizing: border-box"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #FFFFFF; background: #2563EB; border-radius: 5px; text-align: center; padding: 2px 0">DOCX</span></div>
+<div style="width: 64px; height: 80px; background: #FFFFFF; border: 1px solid #DCE4F7; border-radius: 10px; display: flex; flex-direction: column; justify-content: flex-end; padding: 8px; box-sizing: border-box; transform: translateY(-8px)"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #FFFFFF; background: #D93036; border-radius: 5px; text-align: center; padding: 2px 0">PDF</span></div>
+<div style="width: 64px; height: 80px; background: #FFFFFF; border: 1px solid #DCE4F7; border-radius: 10px; display: flex; flex-direction: column; justify-content: flex-end; padding: 8px; box-sizing: border-box"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #FFFFFF; background: #4B5160; border-radius: 5px; text-align: center; padding: 2px 0">TXT</span></div>
+</div>
+<div style="background: #1C1F24; color: #FFFFFF; border-radius: 10px; padding: 10px 14px; font-size: 13px; display: flex; gap: 8px; align-items: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"></path><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path></svg>Ссылка скопирована</div>
+</div>
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 20px">Делитесь в один клик</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4B5160">Отправьте коллегам ссылку на запись или скачайте текст и конспект в Word, PDF и другие форматы.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- 4. PRODUCT: интерактивное демо -->
+<section id="demo" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px 32px">
+<h2 style="margin: 0 0 12px; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; text-align: center">Попробуйте прямо здесь</h2>
+<p style="margin: 0 auto 32px; font-size: 18px; line-height: 1.5; color: #4B5160; text-align: center; max-width: 640px">Раскройте папку, выберите запись, включите плеер или нажмите на фразу</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 24px">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="4">
+<div style="display: flex; gap: 12px; align-items: flex-start; padding: 4px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #D93036; background: #FDE8E8; border-radius: 8px; padding: 4px 8px; flex: none">{{s.n}}</span>
+<div><div style="font-size: 16px; font-weight: 600">{{s.title}}</div><div style="font-size: 14px; line-height: 1.45; color: #4B5160; margin-top: 2px">{{s.text}}</div></div>
+</div>
+</sc-for>
+</div>
+
+<div style="border: 1px solid #E6E8EC; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 80px -30px rgba(28,31,36,0.25), 0 2px 6px rgba(28,31,36,0.04); background: #FFFFFF">
+<div style="display: flex; align-items: center; gap: 8px; padding: 14px 18px; border-bottom: 1px solid #ECEEF1">
+<span style="width: 12px; height: 12px; border-radius: 50%; background: #E3E5E9"></span>
+<span style="width: 12px; height: 12px; border-radius: 50%; background: #E3E5E9"></span>
+<span style="width: 12px; height: 12px; border-radius: 50%; background: #E3E5E9"></span>
+<span style="flex: 1; text-align: center; font-size: 14px; color: #6B7280; margin-right: 60px">recorded.md/app</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; min-height: 540px">
+
+<div style="flex: 1 1 200px; max-width: 240px; background: #F7F8FA; border-right: 1px solid #ECEEF1; padding: 18px 12px; display: flex; flex-direction: column; gap: 2px; font-size: 14px">
+<div style="font-size: 12px; letter-spacing: 0.08em; color: #6B7280; font-weight: 600; padding: 0 10px 8px">МОИ ЗАПИСИ</div>
+<sc-for list="{{folders}}" as="f" hint-placeholder-count="3">
+<button type="button" onClick="{{f.toggle}}" aria-expanded="{{f.expanded}}" style="{{f.style}}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="{{f.chevStyle}}"><path d="m9 6 6 6-6 6"></path></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>{{f.name}}<span style="margin-left: auto; color: #6B7280; font-weight: 400">{{f.count}}</span></button>
+<sc-if value="{{f.open}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 2px; margin: 2px 0 6px 16px; padding-left: 8px; border-left: 1px solid #E3E5E9">
+<sc-for list="{{f.records}}" as="r" hint-placeholder-count="2">
+<button type="button" onClick="{{r.pick}}" aria-pressed="{{r.pressed}}" style="{{r.style}}"><span style="{{r.dotStyle}}"></span>{{r.title}}</button>
+</sc-for>
+</div>
+</sc-if>
+</sc-for>
+</div>
+
+<div style="flex: 999 1 420px; min-width: 0; border-right: 1px solid #ECEEF1">
+<div style="padding: 22px 24px 16px; border-bottom: 1px solid #ECEEF1; display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 22px; font-weight: 700">{{rec.title}}</div>
+<div style="font-size: 14px; color: #6B7280">{{rec.meta}}</div>
+<div style="display: flex; align-items: center; gap: 14px; margin-top: 4px">
+<button type="button" onClick="{{togglePlay}}" aria-label="{{playLabel}}" style="width: 44px; height: 44px; border-radius: 50%; border: 0; background: #1C1F24; display: flex; align-items: center; justify-content: center; flex: none; cursor: pointer">
+<sc-if value="{{playing}}" hint-placeholder-val="{{false}}"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"></path></svg></sc-if>
+<sc-if value="{{paused}}" hint-placeholder-val="{{true}}"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M7 4v16l13-8z"></path></svg></sc-if>
+</button>
+<div aria-hidden="true" style="flex: 1; display: flex; align-items: center; gap: 4px; height: 32px; overflow: hidden">
+<sc-for list="{{bars}}" as="b" hint-placeholder-count="48"><span style="{{b.style}}"></span></sc-for>
+</div>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4B5160; white-space: nowrap">{{posLabel}} <span style="color: #9AA1AC">/ {{rec.dur}}</span></span>
+</div>
+</div>
+<div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 2px">
+<sc-for list="{{lines}}" as="l" hint-placeholder-count="4">
+<button type="button" onClick="{{l.seek}}" style="{{l.rowStyle}}">
+<span style="{{l.avatarStyle}}">{{l.initial}}</span>
+<span style="display: block"><span style="display: block; font-size: 14px"><span style="{{l.nameStyle}}">{{l.name}}</span> <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #6B7280">{{l.time}}</span></span><span style="display: block; font-size: 16px; line-height: 1.5; margin-top: 2px">{{l.text}}</span></span>
+</button>
+</sc-for>
+</div>
+</div>
+
+<div style="flex: 1 1 300px; max-width: 380px; padding: 22px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: #3A3F47"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E5484D" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M3 12h18M6 6l12 12M18 6 6 18"></path></svg>ИИ-конспект</div>
+<sc-for list="{{rec.summary}}" as="blk" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 6px; margin-top: 6px">
+<div style="font-size: 16px; font-weight: 700">{{blk.h}}</div>
+<sc-for list="{{blk.items}}" as="it" hint-placeholder-count="2">
+<div style="display: flex; gap: 8px; font-size: 14px; line-height: 1.5; color: #3A3F47"><span style="{{it.markStyle}}">{{it.mark}}</span><span>{{it.text}}<sc-if value="{{it.hasMeta}}" hint-placeholder-val="{{false}}"><span style="display: block; font-size: 12px; color: #6B7280">{{it.meta}}</span></sc-if></span></div>
+</sc-for>
+</div>
+</sc-for>
+<div style="flex: 1"></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px">
+<span style="border: 1px solid #E3E5E9; border-radius: 8px; padding: 7px 10px">Поделиться</span>
+<span style="border: 1px solid #E3E5E9; border-radius: 8px; padding: 7px 10px; color: #2563EB">Word</span>
+<span style="border: 1px solid #E3E5E9; border-radius: 8px; padding: 7px 10px; color: #D93036">PDF</span>
+<span style="border: 1px solid #E3E5E9; border-radius: 8px; padding: 7px 10px; color: #4B5160">TXT</span>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- FEATURES (вторичные) -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 32px">
+<h2 style="margin: 0 0 32px; font-size: 32px; line-height: 1.15; letter-spacing: -0.02em">А ещё</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+<sc-for list="{{features}}" as="f" hint-placeholder-count="6">
+<div style="border: 1px solid #ECEEF1; border-radius: 16px; padding: 22px; display: flex; gap: 14px; align-items: flex-start">
+<span style="width: 40px; height: 40px; border-radius: 10px; background: #F3F4F6; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500; color: #1C1F24; flex: none">{{f.mark}}</span>
+<div><h3 style="margin: 0 0 4px; font-size: 17px">{{f.title}}</h3><p style="margin: 0; font-size: 14px; line-height: 1.5; color: #4B5160">{{f.text}}</p></div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- USE CASES с картинками -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 80px">
+<h2 style="margin: 0 0 40px; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; text-align: center">Для встреч, лекций, интервью и не только</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px">
+<sc-for list="{{cases}}" as="c" hint-placeholder-count="4">
+<div style="border: 1px solid #ECEEF1; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column">
+<img src="{{c.img}}" alt="{{c.alt}}" style="{{c.imgStyle}}">
+<div style="padding: 20px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 19px">{{c.title}}</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4B5160">{{c.text}}</p>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- 5. OFFER -->
+<section id="pricing" style="background: #F7F8FA; border-top: 1px solid #ECEEF1; border-bottom: 1px solid #ECEEF1">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px">
+<h2 style="margin: 0 0 24px; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; text-align: center">Минуты вместо часов на каждую запись</h2>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 24px; margin-bottom: 48px">
+<sc-for list="{{recap}}" as="r" hint-placeholder-count="4">
+<span style="display: inline-flex; gap: 8px; align-items: center; font-size: 16px"><span style="width: 22px; height: 22px; border-radius: 50%; background: #E8F5EE; color: #1A7F4B; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; flex: none">✓</span>{{r}}</span>
+</sc-for>
+</div>
+
+<div style="display: flex; justify-content: center; margin-bottom: 24px">
+<div role="group" aria-label="Период оплаты" style="display: flex; gap: 4px; padding: 4px; background: #ECEEF2; border-radius: 12px">
+<button type="button" onClick="{{setMonth}}" aria-pressed="{{monthPressed}}" style="{{monthBtnStyle}}">Месяц</button>
+<button type="button" onClick="{{setYear}}" aria-pressed="{{yearPressed}}" style="{{yearBtnStyle}}">Год · выгоднее до 38%</button>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
+<sc-for list="{{plans}}" as="p" hint-placeholder-count="3">
+<div style="{{p.cardStyle}}">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<h3 style="margin: 0; font-size: 20px">{{p.name}}</h3>
+<sc-if value="{{p.popular}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 600; color: #D93036; background: #FDE8E8; border-radius: 999px; padding: 4px 10px">Популярный</span></sc-if>
+</div>
+<div style="display: flex; align-items: baseline; gap: 6px"><span style="font-size: 40px; font-weight: 700; letter-spacing: -0.02em">{{p.price}}</span><span style="font-size: 15px; color: #6B7280">{{p.per}}</span></div>
+<div style="font-size: 14px; color: #6B7280; min-height: 20px">{{p.note}}</div>
+<div style="font-size: 17px; font-weight: 600">{{p.quota}}</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #4B5160">{{p.fit}}</p>
+<div style="flex: 1"></div>
+<a href="{{p.href}}" style="{{p.btnStyle}}">{{p.cta}}</a>
+</div>
+</sc-for>
+</div>
+<p style="margin: 20px 0 0; font-size: 15px; color: #4B5160; text-align: center">Во всех тарифах: спикеры и таймкоды, ИИ-конспект, экспорт, папки и теги, ссылка на запись.</p>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="max-width: 880px; margin: 0 auto; padding: 88px 24px 40px">
+<h2 style="margin: 0 0 28px; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em">Частые вопросы</h2>
+<div style="display: flex; flex-direction: column; border-top: 1px solid #ECEEF1">
+<sc-for list="{{faq}}" as="q" hint-placeholder-count="5">
+<details style="border-bottom: 1px solid #ECEEF1; padding: 20px 0">
+<summary style="font-size: 18px; font-weight: 600; display: flex; justify-content: space-between; gap: 16px">{{q.q}}<span aria-hidden="true" style="color: #6B7280; font-weight: 400">+</span></summary>
+<p style="margin: 12px 0 0; font-size: 16px; line-height: 1.6; color: #4B5160">{{q.a}}</p>
+</details>
+</sc-for>
+</div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 48px 24px 104px">
+<div style="background: #1C1F24; color: #FFFFFF; border-radius: 24px; padding: 64px 32px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px">
+<span style="width: 14px; height: 14px; border-radius: 50%; background: #E5484D; box-shadow: 0 0 0 6px rgba(229,72,77,0.25)"></span>
+<h2 style="margin: 0; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; max-width: 720px">Загрузите запись — через пару минут получите текст и конспект</h2>
+<p style="margin: 0; font-size: 18px; color: #C9CDD4">180 минут в месяц бесплатно</p>
+<a href="#upload" style="text-decoration: none; background: #FFFFFF; color: #1C1F24; font-size: 16px; font-weight: 600; padding: 16px 28px; border-radius: 12px">Начать бесплатно</a>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="border-top: 1px solid #ECEEF1">
+<div style="max-width: 1200px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; font-size: 14px; color: #6B7280">
+<span style="font-family: 'JetBrains Mono', monospace; color: #1C1F24">recorded<span style="color: #D93036">.md</span></span>
+<span style="flex: 1 1 auto">© 2026</span>
+<a href="#pricing" style="color: #6B7280; text-decoration: none">Тарифы</a>
+<a href="#top" style="color: #6B7280; text-decoration: none">Конфиденциальность</a>
+<a href="#top" style="color: #6B7280; text-decoration: none">Условия</a>
+<a href="#top" style="color: #6B7280; text-decoration: none">Поддержка</a>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5600}}'>
+class Component extends DCLogic {
+  data() {
+var SPK = {
+  'Аня':  { c: '#2563EB', bg: '#EAF0FD' },
+  'Дима': { c: '#B45309', bg: '#FDF0C8' },
+  'Олег': { c: '#1A7F4B', bg: '#E8F5EE' },
+  'Мария': { c: '#7C3AED', bg: '#F1EBFE' },
+  'Кандидат': { c: '#B45309', bg: '#FDF0C8' },
+  'Журналист': { c: '#2563EB', bg: '#EAF0FD' },
+  'Эксперт': { c: '#B45309', bg: '#FDF0C8' },
+  'Лектор': { c: '#2563EB', bg: '#EAF0FD' },
+  'Слушатель': { c: '#1A7F4B', bg: '#E8F5EE' },
+  'Спикер': { c: '#2563EB', bg: '#EAF0FD' }
+};
+var FOLDERS = [
+  { id: 'work', name: 'Работа' },
+  { id: 'interview', name: 'Интервью' },
+  { id: 'courses', name: 'Курсы' }
+];
+var RECORDS = [
+  { id: 'sprint', folder: 'work', title: 'Планирование спринта', meta: '52 мин · 3 спикера', dur: '52:10',
+    lines: [
+      { s: 'Аня', t: 494, text: 'Давайте решим по релизу оплаты: успеваем к 11-му или двигаем?' },
+      { s: 'Дима', t: 506, text: 'Не успеваем, экспорт в PDF ещё падает. Предлагаю 18 ноября.' },
+      { s: 'Олег', t: 519, text: 'Ок. Тогда в этот спринт главный фокус — онбординг.' },
+      { s: 'Аня', t: 531, text: 'Макеты онбординга сделаю до 12-го, Дима берёт экспорт.' }
+    ],
+    summary: [
+      { h: 'Кратко', items: [{ text: 'Релиз оплаты сдвигаем на неделю, фокус спринта — онбординг.' }] },
+      { h: 'Решения', check: true, items: [{ text: 'Релиз оплаты — 18 ноября' }, { text: 'Онбординг — главный фокус' }] },
+      { h: 'Задачи', task: true, items: [{ text: 'Макеты онбординга', meta: 'Аня · до 12.11 · 08:51' }, { text: 'Починить экспорт в PDF', meta: 'Дима · до 14.11 · 08:26' }] }
+    ] },
+  { id: 'client', folder: 'work', title: 'Созвон с клиентом', meta: '34 мин · 2 спикера', dur: '34:02',
+    lines: [
+      { s: 'Мария', t: 125, text: 'Нам важно, чтобы отчёты приходили до понедельника.' },
+      { s: 'Олег', t: 138, text: 'Можем настроить выгрузку на пятницу вечером.' },
+      { s: 'Мария', t: 150, text: 'Отлично. И пришлите, пожалуйста, обновлённое КП.' },
+      { s: 'Олег', t: 161, text: 'Пришлю до конца недели.' }
+    ],
+    summary: [
+      { h: 'Кратко', items: [{ text: 'Клиенту нужны отчёты до понедельника и новое КП.' }] },
+      { h: 'Решения', check: true, items: [{ text: 'Выгрузка отчётов — по пятницам' }] },
+      { h: 'Задачи', task: true, items: [{ text: 'Отправить обновлённое КП', meta: 'Олег · до пт · 02:30' }] }
+    ] },
+  { id: 'hr', folder: 'interview', title: 'Собеседование: аналитик', meta: '47 мин · 2 спикера', dur: '47:15',
+    lines: [
+      { s: 'Аня', t: 312, text: 'Расскажите о проекте, которым вы гордитесь.' },
+      { s: 'Кандидат', t: 325, text: 'Я перестроил воронку продаж: конверсия выросла почти вдвое.' },
+      { s: 'Аня', t: 340, text: 'Какие инструменты использовали?' },
+      { s: 'Кандидат', t: 352, text: 'SQL, Python и дашборды в DataLens.' }
+    ],
+    summary: [
+      { h: 'Главное', items: [{ text: 'Сильный опыт в анализе воронки' }, { text: 'Стек: SQL, Python, DataLens' }] },
+      { h: 'Следующий шаг', task: true, items: [{ text: 'Отправить тестовое задание', meta: 'Аня · до 15.11' }] }
+    ] },
+  { id: 'expert', folder: 'interview', title: 'Интервью с экспертом', meta: '1 ч 04 мин · 2 спикера', dur: '1:04:12',
+    lines: [
+      { s: 'Журналист', t: 760, text: 'С чего стоит начинать тем, кто только приходит в профессию?' },
+      { s: 'Эксперт', t: 772, text: 'С привычки доводить маленькие проекты до конца. Это важнее любого курса.' },
+      { s: 'Журналист', t: 800, text: 'А как не выгореть на первых годах?' },
+      { s: 'Эксперт', t: 807, text: 'Выгорают не от объёма работы, а от непонимания, зачем она.' }
+    ],
+    summary: [
+      { h: 'Главные мысли', items: [{ text: 'Доводить проекты до конца важнее курсов' }, { text: 'Выгорание — от неясных целей' }] },
+      { h: 'Цитаты', items: [{ text: '«Это важнее любого курса»', meta: 'Эксперт · 12:52' }] }
+    ] },
+  { id: 'sql', folder: 'courses', title: 'Лекция: основы SQL', meta: '1 ч 28 мин · 2 спикера', dur: '1:28:40',
+    lines: [
+      { s: 'Лектор', t: 1210, text: 'JOIN соединяет строки двух таблиц по общему ключу.' },
+      { s: 'Лектор', t: 1224, text: 'LEFT JOIN оставит все строки левой таблицы, даже без пары.' },
+      { s: 'Слушатель', t: 1238, text: 'А если в правой таблице несколько совпадений?' },
+      { s: 'Лектор', t: 1246, text: 'Тогда строка левой таблицы повторится для каждого совпадения.' }
+    ],
+    summary: [
+      { h: 'Темы', items: [{ text: 'JOIN и его виды', meta: '20:10' }, { text: 'Дубли при нескольких совпадениях', meta: '20:46' }] },
+      { h: 'Термины', items: [{ text: 'LEFT JOIN — все строки левой таблицы' }] }
+    ] },
+  { id: 'webinar', folder: 'courses', title: 'Вебинар по продажам', meta: '58 мин · 1 спикер', dur: '58:31',
+    lines: [
+      { s: 'Спикер', t: 430, text: 'Первое правило холодного письма — одна мысль на письмо.' },
+      { s: 'Спикер', t: 442, text: 'Второе — конкретный следующий шаг, а не «давайте созвонимся».' },
+      { s: 'Спикер', t: 455, text: 'Третье — персонализация в первой строке.' },
+      { s: 'Спикер', t: 466, text: 'И не отправляйте письмо в пятницу вечером.' }
+    ],
+    summary: [
+      { h: 'Главное', items: [{ text: 'Одна мысль на письмо' }, { text: 'Конкретный следующий шаг' }, { text: 'Персонализация в первой строке' }] }
+    ] }
+];
+    return { SPK: SPK, FOLDERS: FOLDERS, RECORDS: RECORDS };
+  }
+  fmt(t) { var m = Math.floor(t / 60), s = t % 60; return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s; }
+  findRec(id) { var R = this.data().RECORDS; for (var i = 0; i < R.length; i++) if (R[i].id === id) return R[i]; return R[0]; }
+  constructor(props) {
+    super(props);
+    this.state = { billing: 'year', tab: 'file', folder: 'work', rec: 'sprint', pos: 494, playing: false, open: { work: true } };
+  }
+  componentDidMount() {
+    var self = this;
+    this.timer = setInterval(function () {
+      if (!self.state.playing) return;
+      var r = self.findRec(self.state.rec);
+      var end = r.lines[r.lines.length - 1].t + 12;
+      var next = self.state.pos + 1;
+      if (next > end) self.setState({ pos: r.lines[0].t, playing: false });
+      else self.setState({ pos: next });
+    }, 350);
+  }
+  componentWillUnmount() { clearInterval(this.timer); }
+  pickRecord(id) {
+    var r = this.findRec(id);
+    var o = Object.assign({}, this.state.open); o[r.folder] = true;
+    this.setState({ rec: id, folder: r.folder, pos: r.lines[0].t, playing: false, open: o });
+  }
+  renderVals() {
+    var self = this;
+    var st = this.state;
+    var yearly = st.billing === 'year';
+    var D = this.data();
+    var SPK = D.SPK, FOLDERS = D.FOLDERS, RECORDS = D.RECORDS;
+    var fmt = this.fmt;
+    var r = this.findRec(st.rec);
+
+    // tabs
+    var tabBase = 'border: 0; font: inherit; font-size: 15px; padding: 10px 18px; min-height: 44px; border-radius: 9px; cursor: pointer; ';
+    var tabOn = tabBase + 'background: #FFFFFF; color: #1C1F24; font-weight: 600; box-shadow: 0 1px 2px rgba(28,31,36,0.08)';
+    var tabOff = tabBase + 'background: transparent; color: #4B5160';
+
+    // folders & records
+    var itemBase = 'display: flex; align-items: center; gap: 8px; width: 100%; text-align: left; border: 0; font: inherit; font-size: 14px; padding: 10px; min-height: 40px; border-radius: 9px; cursor: pointer; ';
+    var folders = FOLDERS.map(function (f) {
+      var isOpen = !!st.open[f.id];
+      var n = RECORDS.filter(function (x) { return x.folder === f.id; });
+      var records = n.map(function (x) {
+        var on = x.id === st.rec;
+        return { title: x.title, pressed: on ? 'true' : 'false',
+          style: itemBase + 'font-size: 13px; padding: 8px 10px; min-height: 36px; ' + (on ? 'background: #FFFFFF; color: #1C1F24; font-weight: 600; box-shadow: 0 0 0 1px #ECEEF1' : 'background: transparent; color: #3A3F47'),
+          dotStyle: 'width: 7px; height: 7px; border-radius: 50%; flex: none; background: ' + (on ? '#E5484D' : '#C9CDD4'),
+          pick: function () { self.pickRecord(x.id); } };
+      });
+      return { name: f.name, count: String(n.length), open: isOpen, expanded: isOpen ? 'true' : 'false', records: records,
+        style: itemBase + 'gap: 6px; background: transparent; color: #1C1F24; font-weight: ' + (f.id === st.folder ? '600' : '500'),
+        chevStyle: 'flex: none; transition: transform .15s; transform: rotate(' + (isOpen ? '90' : '0') + 'deg)',
+        toggle: function () { var o = Object.assign({}, self.state.open); o[f.id] = !o[f.id]; self.setState({ open: o }); } };
+    });
+
+    // player
+    var start = r.lines[0].t, end = r.lines[r.lines.length - 1].t + 12;
+    var ratio = (st.pos - start) / (end - start);
+    var h = [10,22,30,16,34,24,12,28,36,14,26,20,32,12,24,30,18,10,28,22,34,16,26,12,30,20,14,32,24,18,28,10,26,34,16,22,30,12,20,28,18,32,14,24,26,10,30,20];
+    var bars = h.map(function (v, i) {
+      return { style: 'flex: none; width: 3px; border-radius: 2px; height: ' + v + 'px; background: ' + ((i / h.length) <= ratio ? '#E5484D' : '#D5D9DF') };
+    });
+    var active = 0;
+    r.lines.forEach(function (l, i) { if (l.t <= st.pos) active = i; });
+    var lines = r.lines.map(function (l, i) {
+      var s = SPK[l.s] || SPK['Спикер'];
+      var on = i === active;
+      return { name: l.s, time: fmt(l.t), text: l.text, initial: l.s.charAt(0),
+        rowStyle: 'display: flex; gap: 14px; width: 100%; text-align: left; border: 0; font: inherit; color: #1C1F24; cursor: pointer; padding: 10px; border-radius: 12px; background: ' + (on ? '#FFF1F1' : 'transparent'),
+        avatarStyle: 'width: 34px; height: 34px; border-radius: 50%; background: ' + s.bg + '; color: ' + s.c + '; font-weight: 600; display: flex; align-items: center; justify-content: center; flex: none',
+        nameStyle: 'color: ' + s.c + '; font-weight: 600',
+        seek: function () { self.setState({ pos: l.t, playing: true }); } };
+    });
+    var summary = r.summary.map(function (b) {
+      return { h: b.h, items: b.items.map(function (it) {
+        return { text: it.text, meta: it.meta || '', hasMeta: !!it.meta,
+          mark: b.check ? '✓' : (b.task ? '☐' : '—'),
+          markStyle: 'flex: none; color: ' + (b.check ? '#1A7F4B' : (b.task ? '#4B5160' : '#9AA1AC')) };
+      }) };
+    });
+
+    // pricing
+    var btnBase = 'border: 0; font: inherit; font-size: 14px; padding: 10px 16px; min-height: 44px; border-radius: 9px; cursor: pointer; ';
+    var on = btnBase + 'background: #FFFFFF; color: #1C1F24; font-weight: 600; box-shadow: 0 1px 2px rgba(28,31,36,0.08)';
+    var off = btnBase + 'background: transparent; color: #4B5160';
+    var cardBase = 'background: #FFFFFF; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 12px; ';
+    var darkBtn = 'text-decoration: none; text-align: center; background: #1C1F24; color: #FFFFFF; font-size: 16px; font-weight: 500; padding: 14px 20px; border-radius: 12px';
+    var lightBtn = 'text-decoration: none; text-align: center; background: #FFFFFF; color: #1C1F24; border: 1px solid #D5D9DF; font-size: 16px; font-weight: 500; padding: 14px 20px; border-radius: 12px';
+    var plans = [
+      { name: 'Free', price: '0 ₽', per: '', note: 'навсегда', quota: '180 минут в месяц', fit: 'Попробовать на своих записях и расшифровывать время от времени.', cta: 'Начать бесплатно', href: '#upload', popular: false },
+      { name: 'Lite', price: yearly ? '490 ₽' : '790 ₽', per: '/ мес', note: yearly ? '5 900 ₽ при оплате за год' : 'или 5 900 ₽ за год', quota: '12 часов в месяц', fit: 'Несколько важных встреч или лекций в неделю.', cta: 'Выбрать Lite', href: '#app', popular: true },
+      { name: 'Pro', price: yearly ? '990 ₽' : '1 590 ₽', per: '/ мес', note: yearly ? '11 900 ₽ при оплате за год' : 'или 11 900 ₽ за год', quota: '30 часов в месяц', fit: 'Для тех, кто живёт в созвонах, интервью и вебинарах.', cta: 'Выбрать Pro', href: '#app', popular: false }
+    ].map(function (p) {
+      p.cardStyle = cardBase + (p.popular ? 'border: 2px solid #1C1F24' : 'border: 1px solid #ECEEF1');
+      p.btnStyle = p.popular ? darkBtn : lightBtn;
+      return p;
+    });
+
+    var caseImg = function (bg) { return 'display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: ' + bg; };
+
+    return {
+      isFileTab: st.tab === 'file', isLinkTab: st.tab === 'link',
+      fileSelected: st.tab === 'file' ? 'true' : 'false', linkSelected: st.tab === 'link' ? 'true' : 'false',
+      fileTabStyle: st.tab === 'file' ? tabOn : tabOff, linkTabStyle: st.tab === 'link' ? tabOn : tabOff,
+      showFile: function () { self.setState({ tab: 'file' }); },
+      showLink: function () { self.setState({ tab: 'link' }); },
+
+      folders: folders,
+      rec: { title: r.title, meta: r.meta, dur: r.dur, summary: summary },
+      bars: bars, lines: lines, posLabel: fmt(st.pos),
+      playing: st.playing, paused: !st.playing, playLabel: st.playing ? 'Пауза' : 'Воспроизвести',
+      togglePlay: function () { self.setState({ playing: !self.state.playing }); },
+
+      steps: [
+        { n: '01', title: 'Загрузите запись', text: 'Файл или ссылка на видео' },
+        { n: '02', title: 'ИИ расшифрует', text: 'Текст по спикерам с таймкодами' },
+        { n: '03', title: 'Получите конспект', text: 'Кратко, решения и задачи' },
+        { n: '04', title: 'Поделитесь', text: 'Ссылка или экспорт в Word и PDF' }
+      ],
+      features: [
+        { mark: 'А·Д', title: 'Спикеры по именам', text: 'Переименуйте «Спикер 1» один раз — имя обновится во всём тексте.' },
+        { mark: '▷', title: 'Плеер в связке с текстом', text: 'Клик по фразе — плеер перематывает к этому месту.' },
+        { mark: '⌕', title: 'Поиск по всем записям', text: 'Находит фразу в любой расшифровке и открывает её на нужной секунде.' },
+        { mark: '#', title: 'Папки и теги', text: 'Раскладывайте записи по проектам, клиентам или курсам.' },
+        { mark: 'Aa', title: 'Правка прямо в тексте', text: 'Исправьте термин или имя — правка попадёт в экспорт.' },
+        { mark: '↗', title: 'Видео по ссылке', text: 'Не нужно скачивать файл — просто вставьте ссылку.' }
+      ],
+      cases: [
+        { title: 'Встречи', img: './assets/3dd47a806f73292c521a14e6c02b3c3c.webp', alt: 'Девушка на видеозвонке с коллегами', imgStyle: caseImg('#FDE8E8'), text: 'Решения и задачи после созвона — без отдельного протоколиста.' },
+        { title: 'Собеседования', img: './assets/9d5e414f90559c5376c2d52969975e48.webp', alt: 'HR-менеджер беседует с кандидатом за столом', imgStyle: caseImg('#EAF0FD'), text: 'Слушайте кандидата, а не записывайте. Ответы — в тексте с таймкодами.' },
+        { title: 'Интервью', img: './assets/2d412af628f67de6d78a3f75853edb1d.webp', alt: 'Журналист с микрофоном берёт интервью у эксперта', imgStyle: caseImg('#FDF0C8'), text: 'Цитаты с таймкодами вместо ручной расшифровки.' },
+        { title: 'Лекции и вебинары', img: './assets/278184b90fc6e2fc55226365e101c85f.webp', alt: 'Студент в наушниках смотрит онлайн-лекцию и пишет конспект', imgStyle: caseImg('#E8F5EE'), text: 'Конспект занятия и поиск по всем записям курса.' }
+      ],
+      recap: ['Текст любой записи за минуты', 'Решения и задачи без ручного протокола', 'Все записи в одном месте', 'Конспект сразу можно отправить'],
+      plans: plans,
+      monthBtnStyle: yearly ? off : on, yearBtnStyle: yearly ? on : off,
+      monthPressed: yearly ? 'false' : 'true', yearPressed: yearly ? 'true' : 'false',
+      setMonth: function () { self.setState({ billing: 'month' }); },
+      setYear: function () { self.setState({ billing: 'year' }); },
+      faq: [
+        { q: 'Можно попробовать бесплатно?', a: 'Да. На тарифе Free — 180 минут расшифровки каждый месяц. Платный тариф нужен, только если записей станет больше.' },
+        { q: 'Какие файлы и ссылки поддерживаются?', a: 'Аудио и видео: mp3, wav, m4a, ogg, mp4, mov, webm. Можно вставить ссылку на видео — [СПИСОК ПЛАТФОРМ]. Ограничения: [ЛИМИТ ДЛИТЕЛЬНОСТИ И РАЗМЕРА].' },
+        { q: 'Насколько точная расшифровка?', a: 'Качество зависит от записи: чем меньше шума и перебиваний, тем чище текст. Любое слово можно поправить прямо в редакторе.' },
+        { q: 'Кто увидит мои записи?', a: 'Только вы и те, с кем вы поделились ссылкой. [ГДЕ ХРАНЯТСЯ ДАННЫЕ И СКОЛЬКО — ПО ПОЛИТИКЕ КОНФИДЕНЦИАЛЬНОСТИ].' },
+        { q: 'В каких форматах можно скачать?', a: 'Word (.docx), PDF и текстовые форматы. Или просто отправьте коллегам ссылку на запись.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
