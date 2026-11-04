@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Расшифровка аудио и видео в текст по спикерам с ИИ-конспектом.">
+<meta name="description" content="Расшифровка аудио и видео в текст по спикерам + саммари с решениями и задачами.">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <link rel="icon" href="./favicon.ico" sizes="any">
 <title>recorded.md — расшифровка аудио и видео</title>
@@ -50,8 +50,8 @@ summary::-webkit-details-marker{display:none}
 <!-- 1. HERO -->
 <section id="top" style="background: #F7F8FA; border-bottom: 1px solid #ECEEF1">
 <div style="max-width: 960px; margin: 0 auto; padding: 56px 24px 48px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px">
-<h1 style="margin: 0; font-size: clamp(28px, 7.5vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700">Расшифровка аудио и видео в текст с <span style="white-space: nowrap">ИИ-конспектом</span></h1>
-<p style="margin: 0; font-size: 18px; line-height: 1.5; color: #4B5160">Встречи, лекции, интервью и вебинары — в текст по спикерам за пару минут</p>
+<h1 style="margin: 0; font-size: clamp(28px, 7.5vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700">Расшифровка аудио и видео в&nbsp;текст <span style="white-space: nowrap">+ саммари</span></h1>
+<p style="margin: 0; font-size: 18px; line-height: 1.5; color: #4B5160">Встречи, лекции и интервью — в текст по спикерам, итоги и задачи — в саммари. За пару минут</p>
 
 <div id="upload" style="width: 100%; margin-top: 16px; background: #FFFFFF; border: 1px solid #E6E8EC; border-radius: 20px; padding: 20px; box-shadow: 0 24px 60px -30px rgba(28,31,36,0.2); display: flex; flex-direction: column; gap: 16px; text-align: left; box-sizing: border-box">
 <div role="tablist" aria-label="Источник записи" style="display: flex; gap: 4px; padding: 4px; background: #F3F4F6; border-radius: 12px; align-self: flex-start">
@@ -84,7 +84,7 @@ summary::-webkit-details-marker{display:none}
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-size: 14px; color: #3A3F47; margin-top: 8px">
 <span style="background: #FFFFFF; border: 1px solid #E3E5E9; border-radius: 999px; padding: 7px 14px">Разделение по спикерам</span>
 <span style="background: #FFFFFF; border: 1px solid #E3E5E9; border-radius: 999px; padding: 7px 14px">Таймкоды</span>
-<span style="background: #FFFFFF; border: 1px solid #E3E5E9; border-radius: 999px; padding: 7px 14px"><span style="white-space: nowrap">ИИ-конспект</span> и задачи</span>
+<span style="background: #FFFFFF; border: 1px solid #E3E5E9; border-radius: 999px; padding: 7px 14px">Саммари и задачи</span>
 <span style="background: #FFFFFF; border: 1px solid #E3E5E9; border-radius: 999px; padding: 7px 14px">Экспорт в Word и PDF</span>
 <span style="background: #FFFFFF; border: 1px solid #E3E5E9; border-radius: 999px; padding: 7px 14px">Видео по ссылке</span>
 </div>
@@ -140,93 +140,47 @@ summary::-webkit-details-marker{display:none}
 </div>
 <div style="padding: 24px; display: flex; flex-direction: column; gap: 8px">
 <h3 style="margin: 0; font-size: 20px">Делитесь в один клик</h3>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4B5160">Отправьте коллегам ссылку на запись или скачайте текст и конспект в Word, PDF и другие форматы.</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4B5160">Отправьте коллегам ссылку на запись или скачайте текст и саммари в Word, PDF и другие форматы.</p>
 </div>
 </div>
 
 </div>
 </section>
 
-<!-- 4. PRODUCT: интерактивное демо -->
+<!-- 4. PRODUCT: как это работает — скрины по шагам -->
 <section id="demo" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px 32px">
-<h2 style="margin: 0 0 12px; font-size: clamp(26px, 6.5vw, 40px); line-height: 1.15; letter-spacing: -0.02em; text-align: center">Попробуйте прямо здесь</h2>
-<p style="margin: 0 auto 32px; font-size: 18px; line-height: 1.5; color: #4B5160; text-align: center; max-width: 640px">Раскройте папку, выберите запись, включите плеер или нажмите на фразу</p>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 24px">
-<sc-for list="{{steps}}" as="s" hint-placeholder-count="4">
-<div style="display: flex; gap: 12px; align-items: flex-start; padding: 4px">
-<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #D93036; background: #FDE8E8; border-radius: 8px; padding: 4px 8px; flex: none">{{s.n}}</span>
-<div><div style="font-size: 16px; font-weight: 600">{{s.title}}</div><div style="font-size: 14px; line-height: 1.45; color: #4B5160; margin-top: 2px">{{s.text}}</div></div>
+<h2 style="margin: 0 0 12px; font-size: clamp(26px, 6.5vw, 40px); line-height: 1.15; letter-spacing: -0.02em; text-align: center">Как это работает</h2>
+<p style="margin: 0 auto 48px; font-size: 18px; line-height: 1.5; color: #4B5160; text-align: center; max-width: 640px">Три шага от записи до готового текста</p>
+<div style="display: flex; flex-direction: column; gap: 64px">
+<div style="display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: center">
+<div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #D93036; background: #FDE8E8; border-radius: 8px; padding: 4px 8px">01</span>
+<h3 style="margin: 0; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em">Загрузите запись</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4B5160">Перетащите аудио или видео либо вставьте ссылку. Можно закрыть вкладку — пришлём письмо, когда всё будет готово.</p>
 </div>
-</sc-for>
-</div>
-
-<div style="border: 1px solid #E6E8EC; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 80px -30px rgba(28,31,36,0.25), 0 2px 6px rgba(28,31,36,0.04); background: #FFFFFF">
-<div style="display: flex; align-items: center; gap: 8px; padding: 14px 18px; border-bottom: 1px solid #ECEEF1">
-<span style="width: 12px; height: 12px; border-radius: 50%; background: #E3E5E9"></span>
-<span style="width: 12px; height: 12px; border-radius: 50%; background: #E3E5E9"></span>
-<span style="width: 12px; height: 12px; border-radius: 50%; background: #E3E5E9"></span>
-<span style="flex: 1; text-align: center; font-size: 14px; color: #6B7280; margin-right: 60px">recorded.md/app</span>
-</div>
-<div style="display: flex; flex-wrap: wrap; min-height: 540px">
-
-<div style="flex: 1 1 200px; max-width: 240px; background: #F7F8FA; border-right: 1px solid #ECEEF1; padding: 18px 12px; display: flex; flex-direction: column; gap: 2px; font-size: 14px">
-<div style="font-size: 12px; letter-spacing: 0.08em; color: #6B7280; font-weight: 600; padding: 0 10px 8px">МОИ ЗАПИСИ</div>
-<sc-for list="{{folders}}" as="f" hint-placeholder-count="3">
-<button type="button" onClick="{{f.toggle}}" aria-expanded="{{f.expanded}}" style="{{f.style}}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="{{f.chevStyle}}"><path d="m9 6 6 6-6 6"></path></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>{{f.name}}<span style="margin-left: auto; color: #6B7280; font-weight: 400">{{f.count}}</span></button>
-<sc-if value="{{f.open}}" hint-placeholder-val="{{false}}">
-<div style="display: flex; flex-direction: column; gap: 2px; margin: 2px 0 6px 16px; padding-left: 8px; border-left: 1px solid #E3E5E9">
-<sc-for list="{{f.records}}" as="r" hint-placeholder-count="2">
-<button type="button" onClick="{{r.pick}}" aria-pressed="{{r.pressed}}" style="{{r.style}}"><span style="{{r.dotStyle}}"></span>{{r.title}}</button>
-</sc-for>
-</div>
-</sc-if>
-</sc-for>
-</div>
-
-<div style="flex: 999 1 420px; min-width: 0; border-right: 1px solid #ECEEF1">
-<div style="padding: 22px 24px 16px; border-bottom: 1px solid #ECEEF1; display: flex; flex-direction: column; gap: 8px">
-<div style="font-size: 22px; font-weight: 700">{{rec.title}}</div>
-<div style="font-size: 14px; color: #6B7280">{{rec.meta}}</div>
-<div style="display: flex; align-items: center; gap: 14px; margin-top: 4px">
-<button type="button" onClick="{{togglePlay}}" aria-label="{{playLabel}}" style="width: 44px; height: 44px; border-radius: 50%; border: 0; background: #1C1F24; display: flex; align-items: center; justify-content: center; flex: none; cursor: pointer">
-<sc-if value="{{playing}}" hint-placeholder-val="{{false}}"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"></path></svg></sc-if>
-<sc-if value="{{paused}}" hint-placeholder-val="{{true}}"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M7 4v16l13-8z"></path></svg></sc-if>
-</button>
-<div aria-hidden="true" style="flex: 1; display: flex; align-items: center; gap: 4px; height: 32px; overflow: hidden">
-<sc-for list="{{bars}}" as="b" hint-placeholder-count="48"><span style="{{b.style}}"></span></sc-for>
-</div>
-<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4B5160; white-space: nowrap">{{posLabel}} <span style="color: #9AA1AC">/ {{rec.dur}}</span></span>
+<div style="flex: 999 1 520px; min-width: 0; border: 1px solid #E6E8EC; border-radius: 16px; overflow: hidden; box-shadow: 0 30px 80px -30px rgba(28,31,36,0.25), 0 2px 6px rgba(28,31,36,0.04); background: #FFFFFF">
+<img src="./assets/step-upload.webp" alt="Экран загрузки: файл созвона загружается, справа — что будет дальше" width="1120" height="540" loading="lazy" style="display: block; width: 100%; height: auto">
 </div>
 </div>
-<div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 2px">
-<sc-for list="{{lines}}" as="l" hint-placeholder-count="4">
-<button type="button" onClick="{{l.seek}}" style="{{l.rowStyle}}">
-<span style="{{l.avatarStyle}}">{{l.initial}}</span>
-<span style="display: block"><span style="display: block; font-size: 14px"><span style="{{l.nameStyle}}">{{l.name}}</span> <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #6B7280">{{l.time}}</span></span><span style="display: block; font-size: 16px; line-height: 1.5; margin-top: 2px">{{l.text}}</span></span>
-</button>
-</sc-for>
+<div style="display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: center">
+<div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #D93036; background: #FDE8E8; border-radius: 8px; padding: 4px 8px">02</span>
+<h3 style="margin: 0; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em">Получите текст и саммари</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4B5160">Расшифровка по спикерам с таймкодами, рядом — главное из записи. Клик по фразе перематывает плеер к этому месту.</p>
+</div>
+<div style="flex: 999 1 520px; min-width: 0; border: 1px solid #E6E8EC; border-radius: 16px; overflow: hidden; box-shadow: 0 30px 80px -30px rgba(28,31,36,0.25), 0 2px 6px rgba(28,31,36,0.04); background: #FFFFFF">
+<img src="./assets/step-recording.webp" alt="Страница записи: транскрипт интервью по спикерам и саммари справа" width="1440" height="900" loading="lazy" style="display: block; width: 100%; height: auto">
 </div>
 </div>
-
-<div style="flex: 1 1 300px; max-width: 380px; padding: 22px; display: flex; flex-direction: column; gap: 10px">
-<div style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: #3A3F47"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E5484D" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M3 12h18M6 6l12 12M18 6 6 18"></path></svg><span style="white-space: nowrap">ИИ-конспект</span></div>
-<sc-for list="{{rec.summary}}" as="blk" hint-placeholder-count="3">
-<div style="display: flex; flex-direction: column; gap: 6px; margin-top: 6px">
-<div style="font-size: 16px; font-weight: 700">{{blk.h}}</div>
-<sc-for list="{{blk.items}}" as="it" hint-placeholder-count="2">
-<div style="display: flex; gap: 8px; font-size: 14px; line-height: 1.5; color: #3A3F47"><span style="{{it.markStyle}}">{{it.mark}}</span><span>{{it.text}}<sc-if value="{{it.hasMeta}}" hint-placeholder-val="{{false}}"><span style="display: block; font-size: 12px; color: #6B7280">{{it.meta}}</span></sc-if></span></div>
-</sc-for>
+<div style="display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: center">
+<div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #D93036; background: #FDE8E8; border-radius: 8px; padding: 4px 8px">03</span>
+<h3 style="margin: 0; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em">Делитесь и возвращайтесь</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4B5160">Скопируйте текст, скачайте в Word или отправьте ссылку. Все записи — в папках, с поиском по тексту.</p>
 </div>
-</sc-for>
-<div style="flex: 1"></div>
-<div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px">
-<span style="border: 1px solid #E3E5E9; border-radius: 8px; padding: 7px 10px">Поделиться</span>
-<span style="border: 1px solid #E3E5E9; border-radius: 8px; padding: 7px 10px; color: #2563EB">Word</span>
-<span style="border: 1px solid #E3E5E9; border-radius: 8px; padding: 7px 10px; color: #D93036">PDF</span>
-<span style="border: 1px solid #E3E5E9; border-radius: 8px; padding: 7px 10px; color: #4B5160">TXT</span>
+<div style="flex: 999 1 520px; min-width: 0; border: 1px solid #E6E8EC; border-radius: 16px; overflow: hidden; box-shadow: 0 30px 80px -30px rgba(28,31,36,0.25), 0 2px 6px rgba(28,31,36,0.04); background: #FFFFFF">
+<img src="./assets/step-records.webp" alt="Список всех записей с папками, статусами и поиском" width="1440" height="900" loading="lazy" style="display: block; width: 100%; height: auto">
 </div>
-</div>
-
 </div>
 </div>
 </section>
@@ -292,7 +246,7 @@ summary::-webkit-details-marker{display:none}
 </div>
 </sc-for>
 </div>
-<p style="margin: 20px 0 0; font-size: 15px; color: #4B5160; text-align: center">Во всех тарифах: спикеры и таймкоды, <span style="white-space: nowrap">ИИ-конспект</span>, экспорт, папки и теги, ссылка на запись.</p>
+<p style="margin: 20px 0 0; font-size: 15px; color: #4B5160; text-align: center">Во всех тарифах: спикеры и таймкоды, саммари, экспорт, папки и теги, ссылка на запись.</p>
 </div>
 </section>
 
@@ -313,7 +267,7 @@ summary::-webkit-details-marker{display:none}
 <section style="max-width: 1200px; margin: 0 auto; padding: 48px 24px 104px">
 <div style="background: #1C1F24; color: #FFFFFF; border-radius: 24px; padding: 64px 32px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px">
 <span style="width: 14px; height: 14px; border-radius: 50%; background: #E5484D; box-shadow: 0 0 0 6px rgba(229,72,77,0.25)"></span>
-<h2 style="margin: 0; font-size: clamp(26px, 6.5vw, 40px); line-height: 1.15; letter-spacing: -0.02em; max-width: 720px">Загрузите запись — через пару минут получите текст и конспект</h2>
+<h2 style="margin: 0; font-size: clamp(26px, 6.5vw, 40px); line-height: 1.15; letter-spacing: -0.02em; max-width: 720px">Загрузите запись — через пару минут получите текст и саммари</h2>
 <p style="margin: 0; font-size: 18px; color: #C9CDD4">180 минут в месяц бесплатно</p>
 <a href="#upload" style="text-decoration: none; background: #FFFFFF; color: #1C1F24; font-size: 16px; font-weight: 600; padding: 16px 28px; border-radius: 12px">Начать бесплатно</a>
 </div>
@@ -336,174 +290,19 @@ summary::-webkit-details-marker{display:none}
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5600}}'>
 class Component extends DCLogic {
   data() {
-var SPK = {
-  'Аня':  { c: '#2563EB', bg: '#EAF0FD' },
-  'Дима': { c: '#B45309', bg: '#FDF0C8' },
-  'Олег': { c: '#1A7F4B', bg: '#E8F5EE' },
-  'Мария': { c: '#7C3AED', bg: '#F1EBFE' },
-  'Кандидат': { c: '#B45309', bg: '#FDF0C8' },
-  'Журналист': { c: '#2563EB', bg: '#EAF0FD' },
-  'Эксперт': { c: '#B45309', bg: '#FDF0C8' },
-  'Лектор': { c: '#2563EB', bg: '#EAF0FD' },
-  'Слушатель': { c: '#1A7F4B', bg: '#E8F5EE' },
-  'Спикер': { c: '#2563EB', bg: '#EAF0FD' }
-};
-var FOLDERS = [
-  { id: 'work', name: 'Работа' },
-  { id: 'interview', name: 'Интервью' },
-  { id: 'courses', name: 'Курсы' }
-];
-var RECORDS = [
-  { id: 'sprint', folder: 'work', title: 'Планирование спринта', meta: '52 мин · 3 спикера', dur: '52:10',
-    lines: [
-      { s: 'Аня', t: 494, text: 'Давайте решим по релизу оплаты: успеваем к 11-му или двигаем?' },
-      { s: 'Дима', t: 506, text: 'Не успеваем, экспорт в PDF ещё падает. Предлагаю 18 ноября.' },
-      { s: 'Олег', t: 519, text: 'Ок. Тогда в этот спринт главный фокус — онбординг.' },
-      { s: 'Аня', t: 531, text: 'Макеты онбординга сделаю до 12-го, Дима берёт экспорт.' }
-    ],
-    summary: [
-      { h: 'Кратко', items: [{ text: 'Релиз оплаты сдвигаем на неделю, фокус спринта — онбординг.' }] },
-      { h: 'Решения', check: true, items: [{ text: 'Релиз оплаты — 18 ноября' }, { text: 'Онбординг — главный фокус' }] },
-      { h: 'Задачи', task: true, items: [{ text: 'Макеты онбординга', meta: 'Аня · до 12.11 · 08:51' }, { text: 'Починить экспорт в PDF', meta: 'Дима · до 14.11 · 08:26' }] }
-    ] },
-  { id: 'client', folder: 'work', title: 'Созвон с клиентом', meta: '34 мин · 2 спикера', dur: '34:02',
-    lines: [
-      { s: 'Мария', t: 125, text: 'Нам важно, чтобы отчёты приходили до понедельника.' },
-      { s: 'Олег', t: 138, text: 'Можем настроить выгрузку на пятницу вечером.' },
-      { s: 'Мария', t: 150, text: 'Отлично. И пришлите, пожалуйста, обновлённое КП.' },
-      { s: 'Олег', t: 161, text: 'Пришлю до конца недели.' }
-    ],
-    summary: [
-      { h: 'Кратко', items: [{ text: 'Клиенту нужны отчёты до понедельника и новое КП.' }] },
-      { h: 'Решения', check: true, items: [{ text: 'Выгрузка отчётов — по пятницам' }] },
-      { h: 'Задачи', task: true, items: [{ text: 'Отправить обновлённое КП', meta: 'Олег · до пт · 02:30' }] }
-    ] },
-  { id: 'hr', folder: 'interview', title: 'Собеседование: аналитик', meta: '47 мин · 2 спикера', dur: '47:15',
-    lines: [
-      { s: 'Аня', t: 312, text: 'Расскажите о проекте, которым вы гордитесь.' },
-      { s: 'Кандидат', t: 325, text: 'Я перестроил воронку продаж: конверсия выросла почти вдвое.' },
-      { s: 'Аня', t: 340, text: 'Какие инструменты использовали?' },
-      { s: 'Кандидат', t: 352, text: 'SQL, Python и дашборды в DataLens.' }
-    ],
-    summary: [
-      { h: 'Главное', items: [{ text: 'Сильный опыт в анализе воронки' }, { text: 'Стек: SQL, Python, DataLens' }] },
-      { h: 'Следующий шаг', task: true, items: [{ text: 'Отправить тестовое задание', meta: 'Аня · до 15.11' }] }
-    ] },
-  { id: 'expert', folder: 'interview', title: 'Интервью с экспертом', meta: '1 ч 04 мин · 2 спикера', dur: '1:04:12',
-    lines: [
-      { s: 'Журналист', t: 760, text: 'С чего стоит начинать тем, кто только приходит в профессию?' },
-      { s: 'Эксперт', t: 772, text: 'С привычки доводить маленькие проекты до конца. Это важнее любого курса.' },
-      { s: 'Журналист', t: 800, text: 'А как не выгореть на первых годах?' },
-      { s: 'Эксперт', t: 807, text: 'Выгорают не от объёма работы, а от непонимания, зачем она.' }
-    ],
-    summary: [
-      { h: 'Главные мысли', items: [{ text: 'Доводить проекты до конца важнее курсов' }, { text: 'Выгорание — от неясных целей' }] },
-      { h: 'Цитаты', items: [{ text: '«Это важнее любого курса»', meta: 'Эксперт · 12:52' }] }
-    ] },
-  { id: 'sql', folder: 'courses', title: 'Лекция: основы SQL', meta: '1 ч 28 мин · 2 спикера', dur: '1:28:40',
-    lines: [
-      { s: 'Лектор', t: 1210, text: 'JOIN соединяет строки двух таблиц по общему ключу.' },
-      { s: 'Лектор', t: 1224, text: 'LEFT JOIN оставит все строки левой таблицы, даже без пары.' },
-      { s: 'Слушатель', t: 1238, text: 'А если в правой таблице несколько совпадений?' },
-      { s: 'Лектор', t: 1246, text: 'Тогда строка левой таблицы повторится для каждого совпадения.' }
-    ],
-    summary: [
-      { h: 'Темы', items: [{ text: 'JOIN и его виды', meta: '20:10' }, { text: 'Дубли при нескольких совпадениях', meta: '20:46' }] },
-      { h: 'Термины', items: [{ text: 'LEFT JOIN — все строки левой таблицы' }] }
-    ] },
-  { id: 'webinar', folder: 'courses', title: 'Вебинар по продажам', meta: '58 мин · 1 спикер', dur: '58:31',
-    lines: [
-      { s: 'Спикер', t: 430, text: 'Первое правило холодного письма — одна мысль на письмо.' },
-      { s: 'Спикер', t: 442, text: 'Второе — конкретный следующий шаг, а не «давайте созвонимся».' },
-      { s: 'Спикер', t: 455, text: 'Третье — персонализация в первой строке.' },
-      { s: 'Спикер', t: 466, text: 'И не отправляйте письмо в пятницу вечером.' }
-    ],
-    summary: [
-      { h: 'Главное', items: [{ text: 'Одна мысль на письмо' }, { text: 'Конкретный следующий шаг' }, { text: 'Персонализация в первой строке' }] }
-    ] }
-];
-    return { SPK: SPK, FOLDERS: FOLDERS, RECORDS: RECORDS };
+    return {};
   }
-  fmt(t) { var m = Math.floor(t / 60), s = t % 60; return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s; }
-  findRec(id) { var R = this.data().RECORDS; for (var i = 0; i < R.length; i++) if (R[i].id === id) return R[i]; return R[0]; }
   constructor(props) {
     super(props);
-    this.state = { billing: 'year', tab: 'file', folder: 'work', rec: 'sprint', pos: 494, playing: false, open: { work: true } };
-  }
-  componentDidMount() {
-    var self = this;
-    this.timer = setInterval(function () {
-      if (!self.state.playing) return;
-      var r = self.findRec(self.state.rec);
-      var end = r.lines[r.lines.length - 1].t + 12;
-      var next = self.state.pos + 1;
-      if (next > end) self.setState({ pos: r.lines[0].t, playing: false });
-      else self.setState({ pos: next });
-    }, 350);
-  }
-  componentWillUnmount() { clearInterval(this.timer); }
-  pickRecord(id) {
-    var r = this.findRec(id);
-    var o = Object.assign({}, this.state.open); o[r.folder] = true;
-    this.setState({ rec: id, folder: r.folder, pos: r.lines[0].t, playing: false, open: o });
+    this.state = { billing: 'year', tab: 'file' };
   }
   renderVals() {
     var self = this;
     var st = this.state;
     var yearly = st.billing === 'year';
-    var D = this.data();
-    var SPK = D.SPK, FOLDERS = D.FOLDERS, RECORDS = D.RECORDS;
-    var fmt = this.fmt;
-    var r = this.findRec(st.rec);
-
-    // tabs
     var tabBase = 'border: 0; font: inherit; font-size: 15px; padding: 10px 18px; min-height: 44px; border-radius: 9px; cursor: pointer; ';
     var tabOn = tabBase + 'background: #FFFFFF; color: #1C1F24; font-weight: 600; box-shadow: 0 1px 2px rgba(28,31,36,0.08)';
     var tabOff = tabBase + 'background: transparent; color: #4B5160';
-
-    // folders & records
-    var itemBase = 'display: flex; align-items: center; gap: 8px; width: 100%; text-align: left; border: 0; font: inherit; font-size: 14px; padding: 10px; min-height: 40px; border-radius: 9px; cursor: pointer; ';
-    var folders = FOLDERS.map(function (f) {
-      var isOpen = !!st.open[f.id];
-      var n = RECORDS.filter(function (x) { return x.folder === f.id; });
-      var records = n.map(function (x) {
-        var on = x.id === st.rec;
-        return { title: x.title, pressed: on ? 'true' : 'false',
-          style: itemBase + 'font-size: 13px; padding: 8px 10px; min-height: 36px; ' + (on ? 'background: #FFFFFF; color: #1C1F24; font-weight: 600; box-shadow: 0 0 0 1px #ECEEF1' : 'background: transparent; color: #3A3F47'),
-          dotStyle: 'width: 7px; height: 7px; border-radius: 50%; flex: none; background: ' + (on ? '#E5484D' : '#C9CDD4'),
-          pick: function () { self.pickRecord(x.id); } };
-      });
-      return { name: f.name, count: String(n.length), open: isOpen, expanded: isOpen ? 'true' : 'false', records: records,
-        style: itemBase + 'gap: 6px; background: transparent; color: #1C1F24; font-weight: ' + (f.id === st.folder ? '600' : '500'),
-        chevStyle: 'flex: none; transition: transform .15s; transform: rotate(' + (isOpen ? '90' : '0') + 'deg)',
-        toggle: function () { var o = Object.assign({}, self.state.open); o[f.id] = !o[f.id]; self.setState({ open: o }); } };
-    });
-
-    // player
-    var start = r.lines[0].t, end = r.lines[r.lines.length - 1].t + 12;
-    var ratio = (st.pos - start) / (end - start);
-    var h = [10,22,30,16,34,24,12,28,36,14,26,20,32,12,24,30,18,10,28,22,34,16,26,12,30,20,14,32,24,18,28,10,26,34,16,22,30,12,20,28,18,32,14,24,26,10,30,20];
-    var bars = h.map(function (v, i) {
-      return { style: 'flex: none; width: 3px; border-radius: 2px; height: ' + v + 'px; background: ' + ((i / h.length) <= ratio ? '#E5484D' : '#D5D9DF') };
-    });
-    var active = 0;
-    r.lines.forEach(function (l, i) { if (l.t <= st.pos) active = i; });
-    var lines = r.lines.map(function (l, i) {
-      var s = SPK[l.s] || SPK['Спикер'];
-      var on = i === active;
-      return { name: l.s, time: fmt(l.t), text: l.text, initial: l.s.charAt(0),
-        rowStyle: 'display: flex; gap: 14px; width: 100%; text-align: left; border: 0; font: inherit; color: #1C1F24; cursor: pointer; padding: 10px; border-radius: 12px; background: ' + (on ? '#FFF1F1' : 'transparent'),
-        avatarStyle: 'width: 34px; height: 34px; border-radius: 50%; background: ' + s.bg + '; color: ' + s.c + '; font-weight: 600; display: flex; align-items: center; justify-content: center; flex: none',
-        nameStyle: 'color: ' + s.c + '; font-weight: 600',
-        seek: function () { self.setState({ pos: l.t, playing: true }); } };
-    });
-    var summary = r.summary.map(function (b) {
-      return { h: b.h, items: b.items.map(function (it) {
-        return { text: it.text, meta: it.meta || '', hasMeta: !!it.meta,
-          mark: b.check ? '✓' : (b.task ? '☐' : '—'),
-          markStyle: 'flex: none; color: ' + (b.check ? '#1A7F4B' : (b.task ? '#4B5160' : '#9AA1AC')) };
-      }) };
-    });
 
     // pricing
     var btnBase = 'border: 0; font: inherit; font-size: 14px; padding: 10px 16px; min-height: 44px; border-radius: 9px; cursor: pointer; ';
@@ -531,18 +330,6 @@ var RECORDS = [
       showFile: function () { self.setState({ tab: 'file' }); },
       showLink: function () { self.setState({ tab: 'link' }); },
 
-      folders: folders,
-      rec: { title: r.title, meta: r.meta, dur: r.dur, summary: summary },
-      bars: bars, lines: lines, posLabel: fmt(st.pos),
-      playing: st.playing, paused: !st.playing, playLabel: st.playing ? 'Пауза' : 'Воспроизвести',
-      togglePlay: function () { self.setState({ playing: !self.state.playing }); },
-
-      steps: [
-        { n: '01', title: 'Загрузите запись', text: 'Файл или ссылка на видео' },
-        { n: '02', title: 'ИИ расшифрует', text: 'Текст по спикерам с таймкодами' },
-        { n: '03', title: 'Получите конспект', text: 'Кратко, решения и задачи' },
-        { n: '04', title: 'Поделитесь', text: 'Ссылка или экспорт в Word и PDF' }
-      ],
       features: [
         { mark: 'А·Д', title: 'Спикеры по именам', text: 'Переименуйте «Спикер 1» один раз — имя обновится во всём тексте.' },
         { mark: '▷', title: 'Плеер в связке с текстом', text: 'Клик по фразе — плеер перематывает к этому месту.' },
@@ -557,7 +344,7 @@ var RECORDS = [
         { title: 'Интервью', img: './assets/2d412af628f67de6d78a3f75853edb1d.webp', alt: 'Журналист с микрофоном берёт интервью у эксперта', imgStyle: caseImg('#FDF0C8'), text: 'Цитаты с таймкодами вместо ручной расшифровки.' },
         { title: 'Лекции и вебинары', img: './assets/278184b90fc6e2fc55226365e101c85f.webp', alt: 'Студент в наушниках смотрит онлайн-лекцию и пишет конспект', imgStyle: caseImg('#E8F5EE'), text: 'Конспект занятия и поиск по всем записям курса.' }
       ],
-      recap: ['Текст любой записи за минуты', 'Решения и задачи без ручного протокола', 'Все записи в одном месте', 'Конспект сразу можно отправить'],
+      recap: ['Текст любой записи за минуты', 'Решения и задачи без ручного протокола', 'Все записи в одном месте', 'Саммари сразу можно отправить'],
       plans: plans,
       monthBtnStyle: yearly ? off : on, yearBtnStyle: yearly ? on : off,
       monthPressed: yearly ? 'false' : 'true', yearPressed: yearly ? 'true' : 'false',
