@@ -3,10 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Расшифровка аудио и видео в текст по спикерам + саммари с решениями и задачами.">
+<meta name="description" content="Транскрибация аудио и видео в текст по спикерам с таймкодами и саммари с решениями и задачами — 60 минут бесплатно.">
+<meta property="og:title" content="Транскрибация и расшифровка аудио и видео в текст — recorded.md">
+<meta property="og:description" content="Транскрибация аудио и видео в текст по спикерам с таймкодами и саммари с решениями и задачами — 60 минут бесплатно.">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <link rel="icon" href="./favicon.ico" sizes="any">
-<title>recorded.md — расшифровка аудио и видео</title>
+<title>Транскрибация и расшифровка аудио и видео в текст — recorded.md</title>
 <script src="./vendor/react.js"></script>
 <script src="./vendor/react-dom.js"></script>
 <script src="./support.js"></script>
@@ -50,7 +52,8 @@ summary::-webkit-details-marker{display:none}
 <!-- 1. HERO -->
 <section id="top" style="background: #F7F8FA; border-bottom: 1px solid #ECEEF1">
 <div style="max-width: 960px; margin: 0 auto; padding: 56px 24px 48px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px">
-<h1 style="margin: 0; font-size: clamp(28px, 7.5vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700">Расшифровка аудио и видео в&nbsp;текст <span style="white-space: nowrap">+ саммари</span></h1>
+<h1 style="margin: 0; font-size: clamp(24px, 6.4vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700">Расшифровка и транскрибация аудио и видео в&nbsp;текст <span style="white-space: nowrap">+ саммари</span></h1>
+<!-- TODO: проверить скорость на прототипе (час записи), иначе заменить на "за несколько минут" -->
 <p style="margin: 0; font-size: 18px; line-height: 1.5; color: #4B5160">Встречи, лекции и интервью — в текст по спикерам, итоги и задачи — в саммари. За пару минут</p>
 
 <div id="upload" style="width: 100%; margin-top: 16px; background: #FFFFFF; border: 1px solid #E6E8EC; border-radius: 20px; padding: 20px; box-shadow: 0 24px 60px -30px rgba(28,31,36,0.2); display: flex; flex-direction: column; gap: 16px; text-align: left; box-sizing: border-box">
@@ -78,7 +81,7 @@ summary::-webkit-details-marker{display:none}
 <span style="font-size: 14px; color: #6B7280">YouTube, VK Видео, Яндекс Диск и другие</span>
 </div>
 </sc-if>
-<div style="text-align: center; font-size: 14px; color: #6B7280">180 минут в месяц бесплатно</div>
+<div style="text-align: center; font-size: 14px; color: #6B7280">60 минут бесплатно — без регистрации</div>
 </div>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-size: 14px; color: #3A3F47; margin-top: 8px">
@@ -202,15 +205,34 @@ summary::-webkit-details-marker{display:none}
 <section style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 80px">
 <h2 style="margin: 0 0 40px; font-size: clamp(26px, 6.5vw, 40px); line-height: 1.15; letter-spacing: -0.02em; text-align: center">Для встреч, лекций, интервью и не только</h2>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px">
-<sc-for list="{{cases}}" as="c" hint-placeholder-count="4">
 <div style="border: 1px solid #ECEEF1; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column">
-<img src="{{c.img}}" alt="{{c.alt}}" style="{{c.imgStyle}}">
+<img loading="lazy" src="./assets/3dd47a806f73292c521a14e6c02b3c3c.webp" alt="Девушка на видеозвонке с коллегами" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #FDE8E8">
 <div style="padding: 20px; display: flex; flex-direction: column; gap: 8px">
-<h3 style="margin: 0; font-size: 19px">{{c.title}}</h3>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4B5160">{{c.text}}</p>
+<h3 style="margin: 0; font-size: 19px">Встречи</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4B5160">Решения и задачи после созвона — без отдельного протоколиста.</p>
 </div>
 </div>
-</sc-for>
+<div style="border: 1px solid #ECEEF1; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" src="./assets/9d5e414f90559c5376c2d52969975e48.webp" alt="HR-менеджер беседует с кандидатом за столом" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #EAF0FD">
+<div style="padding: 20px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 19px">Собеседования</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4B5160">Слушайте кандидата, а не записывайте. Ответы — в тексте с таймкодами.</p>
+</div>
+</div>
+<div style="border: 1px solid #ECEEF1; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" src="./assets/2d412af628f67de6d78a3f75853edb1d.webp" alt="Журналист с микрофоном берёт интервью у эксперта" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #FDF0C8">
+<div style="padding: 20px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 19px">Интервью</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4B5160">Цитаты с таймкодами вместо ручной расшифровки.</p>
+</div>
+</div>
+<div style="border: 1px solid #ECEEF1; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" src="./assets/278184b90fc6e2fc55226365e101c85f.webp" alt="Студент в наушниках смотрит онлайн-лекцию и пишет конспект" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #E8F5EE">
+<div style="padding: 20px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 19px">Лекции и вебинары</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4B5160">Конспект занятия и поиск по всем записям курса.</p>
+</div>
+</div>
 </div>
 </section>
 
@@ -267,8 +289,9 @@ summary::-webkit-details-marker{display:none}
 <section style="max-width: 1200px; margin: 0 auto; padding: 48px 24px 104px">
 <div style="background: #1C1F24; color: #FFFFFF; border-radius: 24px; padding: 64px 32px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px">
 <span style="width: 14px; height: 14px; border-radius: 50%; background: #E5484D; box-shadow: 0 0 0 6px rgba(229,72,77,0.25)"></span>
+<!-- TODO: проверить скорость на прототипе (час записи), иначе заменить на "за несколько минут" -->
 <h2 style="margin: 0; font-size: clamp(26px, 6.5vw, 40px); line-height: 1.15; letter-spacing: -0.02em; max-width: 720px">Загрузите запись — через пару минут получите текст и саммари</h2>
-<p style="margin: 0; font-size: 18px; color: #C9CDD4">180 минут в месяц бесплатно</p>
+<p style="margin: 0; font-size: 18px; color: #C9CDD4">60 минут бесплатно — без регистрации</p>
 <a href="#upload" style="text-decoration: none; background: #FFFFFF; color: #1C1F24; font-size: 16px; font-weight: 600; padding: 16px 28px; border-radius: 12px">Начать бесплатно</a>
 </div>
 </section>
@@ -312,16 +335,14 @@ class Component extends DCLogic {
     var darkBtn = 'text-decoration: none; text-align: center; background: #1C1F24; color: #FFFFFF; font-size: 16px; font-weight: 500; padding: 14px 20px; border-radius: 12px';
     var lightBtn = 'text-decoration: none; text-align: center; background: #FFFFFF; color: #1C1F24; border: 1px solid #D5D9DF; font-size: 16px; font-weight: 500; padding: 14px 20px; border-radius: 12px';
     var plans = [
-      { name: 'Free', price: '0 ₽', per: '', note: 'навсегда', quota: '180 минут в месяц', fit: 'Попробовать на своих записях и расшифровывать время от времени.', cta: 'Начать бесплатно', href: '#upload', popular: false },
-      { name: 'Lite', price: yearly ? '490 ₽' : '790 ₽', per: '/ мес', note: yearly ? '5 900 ₽ при оплате за год' : 'или 5 900 ₽ за год', quota: '12 часов в месяц', fit: 'Несколько важных встреч или лекций в неделю.', cta: 'Выбрать Lite', href: '#app', popular: true },
-      { name: 'Pro', price: yearly ? '990 ₽' : '1 590 ₽', per: '/ мес', note: yearly ? '11 900 ₽ при оплате за год' : 'или 11 900 ₽ за год', quota: '30 часов в месяц', fit: 'Для тех, кто живёт в созвонах, интервью и вебинарах.', cta: 'Выбрать Pro', href: '#app', popular: false }
+      { name: 'Free', price: '0 ₽', per: '', note: 'один раз', quota: '60 минут', fit: 'Проверить качество на своей записи — без регистрации и карты.', cta: 'Начать бесплатно', href: '#upload', popular: false },
+      { name: 'Lite', price: yearly ? '490 ₽' : '790 ₽', per: '/ мес', note: yearly ? '5 900 ₽ при оплате за год' : 'или 5 900 ₽ за год', quota: '16 часов в месяц', fit: 'Несколько важных встреч или лекций в неделю.', cta: 'Выбрать Lite', href: '#app', popular: true },
+      { name: 'Pro', price: yearly ? '990 ₽' : '1 590 ₽', per: '/ мес', note: yearly ? '11 900 ₽ при оплате за год' : 'или 11 900 ₽ за год', quota: '50 часов в месяц', fit: 'Для тех, кто живёт в созвонах, интервью и вебинарах.', cta: 'Выбрать Pro', href: '#app', popular: false }
     ].map(function (p) {
       p.cardStyle = cardBase + (p.popular ? 'border: 2px solid #1C1F24' : 'border: 1px solid #ECEEF1');
       p.btnStyle = p.popular ? darkBtn : lightBtn;
       return p;
     });
-
-    var caseImg = function (bg) { return 'display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: ' + bg; };
 
     return {
       isFileTab: st.tab === 'file', isLinkTab: st.tab === 'link',
@@ -338,12 +359,6 @@ class Component extends DCLogic {
         { mark: 'Aa', title: 'Правка прямо в тексте', text: 'Исправьте термин или имя — правка попадёт в экспорт.' },
         { mark: '↗', title: 'Видео по ссылке', text: 'Не нужно скачивать файл — просто вставьте ссылку.' }
       ],
-      cases: [
-        { title: 'Встречи', img: './assets/3dd47a806f73292c521a14e6c02b3c3c.webp', alt: 'Девушка на видеозвонке с коллегами', imgStyle: caseImg('#FDE8E8'), text: 'Решения и задачи после созвона — без отдельного протоколиста.' },
-        { title: 'Собеседования', img: './assets/9d5e414f90559c5376c2d52969975e48.webp', alt: 'HR-менеджер беседует с кандидатом за столом', imgStyle: caseImg('#EAF0FD'), text: 'Слушайте кандидата, а не записывайте. Ответы — в тексте с таймкодами.' },
-        { title: 'Интервью', img: './assets/2d412af628f67de6d78a3f75853edb1d.webp', alt: 'Журналист с микрофоном берёт интервью у эксперта', imgStyle: caseImg('#FDF0C8'), text: 'Цитаты с таймкодами вместо ручной расшифровки.' },
-        { title: 'Лекции и вебинары', img: './assets/278184b90fc6e2fc55226365e101c85f.webp', alt: 'Студент в наушниках смотрит онлайн-лекцию и пишет конспект', imgStyle: caseImg('#E8F5EE'), text: 'Конспект занятия и поиск по всем записям курса.' }
-      ],
       recap: ['Текст любой записи за минуты', 'Решения и задачи без ручного протокола', 'Все записи в одном месте', 'Саммари сразу можно отправить'],
       plans: plans,
       monthBtnStyle: yearly ? off : on, yearBtnStyle: yearly ? on : off,
@@ -351,7 +366,7 @@ class Component extends DCLogic {
       setMonth: function () { self.setState({ billing: 'month' }); },
       setYear: function () { self.setState({ billing: 'year' }); },
       faq: [
-        { q: 'Можно попробовать бесплатно?', a: 'Да. На тарифе Free — 180 минут расшифровки каждый месяц. Платный тариф нужен, только если записей станет больше.' },
+        { q: 'Можно попробовать бесплатно?', a: 'Да. 60 минут расшифровки бесплатно — один раз, без регистрации и карты. Этого хватит, чтобы проверить качество на своей записи. Дальше — тариф Lite или Pro.' },
         { q: 'Какие файлы и ссылки поддерживаются?', a: 'Аудио и видео: mp3, wav, m4a, ogg, mp4, mov, webm. Можно вставить ссылку на видео — [СПИСОК ПЛАТФОРМ]. Ограничения: [ЛИМИТ ДЛИТЕЛЬНОСТИ И РАЗМЕРА].' },
         { q: 'Насколько точная расшифровка?', a: 'Качество зависит от записи: чем меньше шума и перебиваний, тем чище текст. Любое слово можно поправить прямо в редакторе.' },
         { q: 'Кто увидит мои записи?', a: 'Только вы и те, с кем вы поделились ссылкой. [ГДЕ ХРАНЯТСЯ ДАННЫЕ И СКОЛЬКО — ПО ПОЛИТИКЕ КОНФИДЕНЦИАЛЬНОСТИ].' },
